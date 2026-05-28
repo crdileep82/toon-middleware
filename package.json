@@ -1,0 +1,74 @@
+{
+  "name": "toon-middleware",
+  "version": "1.0.0",
+  "description": "Zero-config Express & Fastify middleware for automatic JSON ↔ TOON conversion with 30–60% LLM token savings",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/cjs/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./fastify": {
+      "import": "./dist/fastify.js",
+      "require": "./dist/cjs/fastify.cjs",
+      "types": "./dist/fastify.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc --project tsconfig.json && node scripts/build-cjs.js",
+    "build:esm": "tsc --project tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@toon-format/toon": "^2.2.0",
+    "fastify-plugin": "^4.0.0",
+    "gpt-tokenizer": "^2.1.2"
+  },
+  "peerDependencies": {
+    "express": ">=4.0.0",
+    "fastify": ">=4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "express": {
+      "optional": true
+    },
+    "fastify": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.0",
+    "@types/node": "^20.0.0",
+    "@types/supertest": "^6.0.0",
+    "express": "^4.18.0",
+    "fastify": "^4.0.0",
+    "supertest": "^6.3.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "keywords": [
+    "toon",
+    "middleware",
+    "express",
+    "fastify",
+    "llm",
+    "token",
+    "compression",
+    "encoding"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/toon-middleware"
+  }
+}
